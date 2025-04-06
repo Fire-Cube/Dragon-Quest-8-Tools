@@ -43,8 +43,8 @@ def set_monster_param(monster_params_obj, monster_id, field_name, value_str):
     return True
 
 
-def save_monster_params(monster_params_obj, path_out="btl_monster_param_10_modified.bin"):
-    original_content = bytearray(read_file(Path(".", "btl_monster_param_10.bin")))
+def save_monster_params(data_dir, monster_params_obj, path_out="btl_monster_param_10_modified.bin"):
+    original_content = bytearray(read_file(Path(data_dir, "bin_ext", "btl_monster_param_10.bin")))
     byte_ptr = BytePtr()
     byte_ptr.set_data(original_content)
 
@@ -67,19 +67,20 @@ def main():
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     set_parser = subparsers.add_parser("set", help="Set a monster parameter")
-    set_parser.add_argument("monster_id", type=int, help="Monster ID (ingame ID)")
+    set_parser.add_argument("data_dir", type=str, help="Data directory")
+    set_parser.add_argument("monster_id", type=int, help="Monster ID")
     set_parser.add_argument("field", type=str, help="Fieldname (z.B. power, agility, name)")
     set_parser.add_argument("value", help="New Value")
 
     args = parser.parse_args()
 
-    monster_params = MonsterParams(Path("."))
+    monster_params = MonsterParams(Path(args.data_dir))
     monster_params.load()
 
     if args.command == "set":
         success = set_monster_param(monster_params, args.monster_id, args.field, args.value)
         if success:
-            save_monster_params(monster_params)
+            save_monster_params(args.data_dir, monster_params)
 
 
 if __name__ == "__main__":
