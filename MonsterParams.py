@@ -349,6 +349,9 @@ class MonsterParams:
         self.monster_params = None
     
 
+    get_monster_param = MonsterParamsPostProcessor.get_monster_param
+    monster_id_to_unit_id = MonsterParamsPostProcessor.monster_id_to_unit_id
+
     def load(self):
         monster_params_file_handler = MonsterParamsFileHandler(self.data_dir)
         monster_params_file_handler.load()
