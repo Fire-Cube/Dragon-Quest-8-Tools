@@ -175,8 +175,8 @@ class MonsterParamsFileHandler:
             self.a_threat_rate = [MonsterParamsFileHandler.BATTLE_TABLE.THREAT_RATE(self.ptr).load() for _ in range(16)]
             self.a_step_out_rate = self.ptr.get_uint16_array(5)
             self.a_action_pattern_rate = [
-                [self.ptr.get_byte() for _ in range(6)]  # (Spalten)
-                for _ in range(4)                        # (Zeilen)
+                self.ptr.get_bytes_array(6)
+                for _ in range(4)
             ]
 
             self.a_recover_stat_rate = [
@@ -185,8 +185,8 @@ class MonsterParamsFileHandler:
             ]
 
             self.a_target_player_rate = [
-                [self.ptr.get_byte() for _ in range(5)]  # (Spalten)
-                for _ in range(5)                        # (Zeilen)
+                self.ptr.get_bytes_array(5)
+                for _ in range(5)
             ]
 
             self.ptr.skip(1)
