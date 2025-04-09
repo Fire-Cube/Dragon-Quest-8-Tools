@@ -2,7 +2,7 @@ import struct
 
 
 class BytePtr:
-    def __init__(self):
+    def __init__(self) -> None:
         self.byte_data = bytearray()
         self.pos = 0
 
@@ -13,6 +13,10 @@ class BytePtr:
 
     def skip(self, count: int) -> None:
         self.pos += count
+
+    
+    def set_pos(self, pos: int) -> None:
+        self.pos = pos
 
 
     def set_data(self, data: bytes) -> None:
