@@ -24,6 +24,18 @@ class BytePtr:
         self.pos = 0
 
     
+    def get_int8(self) -> int:
+        val = struct.unpack_from("<b", self.byte_data, self.pos)[0]
+        self.skip(1)
+        return val
+    
+
+    def get_uint8(self) -> int:
+        val = struct.unpack_from("<B", self.byte_data, self.pos)[0]
+        self.skip(1)
+        return val
+
+
     def get_int16(self) -> int:
         val = struct.unpack_from("<h", self.byte_data, self.pos)[0]
         self.skip(2)
