@@ -316,7 +316,7 @@ class Replacement:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Extract or replace files in the DAT archive and update the HD6 file accordingly."
+        description="Extract, replace or list files in the DAT archive and update the HD6 file accordingly."
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
