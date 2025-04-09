@@ -6,6 +6,7 @@ This repository contains tools for Dragon Quest 8 on the PS2. The tools are full
 The following tools are included:
 
 - HD6Tools.py - Extract, repack or list files from the HD6 archive.
+- PakTools.py - Extract or list files from the PAK archive. (pak, mpk, pcp, ipk, nav, sky, snd, pac and chr files)
 - MonsterParams.py - Extract the monster parameters from the game files and dump it to JSON.
 - modify_monster_param.py - Modify the monster parameters and write them into the game files.
 - Actions.py - List the actions used in fights and their IDs.
